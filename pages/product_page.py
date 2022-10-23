@@ -21,7 +21,10 @@ class ProductPage(BasePage):
         self.check_succes_message()
 
     def check_succes_message(self):
-        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE)
+        assert (
+            self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE),
+            'success message not found'
+        )
         message = self.browser.find_element(
             *ProductPageLocators.SUCCESS_MESSAGE
         )
@@ -31,5 +34,5 @@ class ProductPage(BasePage):
         ).text
         assert (
             title_from_message == product_title,
-            'Product title and title from success message not equal'
+            'product title and title from success message not equal'
         )
