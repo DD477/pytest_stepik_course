@@ -16,3 +16,6 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
+    def get_alert(self):
+        return self.browser.switch_to.alert
