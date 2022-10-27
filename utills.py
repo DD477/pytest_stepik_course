@@ -1,7 +1,6 @@
 import math
 import os
 import re
-import time 
 
 from dotenv import load_dotenv
 from selenium import webdriver as driver

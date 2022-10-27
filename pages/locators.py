@@ -12,7 +12,7 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     CARD = (By.XPATH, '//div[contains(@class,"basket")]')
-    ADD_TO_CARD = (By.XPATH, '//button[@value="Добавить в корзину"]')
+    ADD_TO_CARD = (By.XPATH, '//button[contains(@class,"add-to-basket")]')
     SUCCESS_MESSAGE = (
         By.XPATH, '//div[contains(@class, "alert-success")][1]'
     )

@@ -11,7 +11,7 @@ class ProductPage(BasePage):
             *ProductPageLocators.ADD_TO_CARD
         )
         add_to_cart_button.click()
-        solve_quiz_and_get_code(self.browser)
+        # solve_quiz_and_get_code(self.browser)
         self.check_succes_message()
 
     def check_succes_message(self):
@@ -28,3 +28,13 @@ class ProductPage(BasePage):
         assert title_from_message == product_title, (
             'product title and title from success message not equal'
         )
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(
+            *ProductPageLocators.SUCCESS_MESSAGE
+        ), 'success message is presented, but should not be'
+
+    def should_disappeared_success_message(self):
+        assert self.is_disappeared(
+            *ProductPageLocators.SUCCESS_MESSAGE
+        ), 'success message is not disappeared, but should be'
