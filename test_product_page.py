@@ -11,18 +11,10 @@ PRODUCT_LINK = (
 )
 
 @pytest.mark.need_review
-@pytest.mark.parametrize('offer', [
-    pytest.param(i, marks=pytest.mark.xfail(i == 7, reason=FALLING_REASON)
-                 ) for i in range(10)
-])
-def test_guest_can_add_product_to_basket(browser, offer):
-    link = (
-        'http://selenium1py.pythonanywhere.com/ru/'
-        f'catalogue/coders-at-work_207/?promo=offer{offer}'
-    )
-    page = ProductPage(browser, link)
+def test_guest_can_add_product_to_basket(browser):
+    page = ProductPage(browser, PRODUCT_LINK)
     page.open()
-    page.add_product_to_cart(is_got_quiz=True)
+    page.add_product_to_cart()
 
 
 def test_guest_should_see_login_link_on_product_page(browser):
