@@ -9,7 +9,7 @@ class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(timeout)
 
     def is_element_present(self, how, what):
         try:
@@ -42,11 +42,16 @@ class BasePage:
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
-        #убрать эту хрень
-        link = 'http://selenium1py.pythonanywhere.com/en-gb/accounts/login/'
-        assert self.browser.current_url == link, (
+        # убрать эту хрень
+        correct_link = ('http://selenium1py.pythonanywhere.com/'
+                        'en-gb/accounts/login/')
+        assert self.browser.current_url == correct_link, (
             'current url is not login_url'
         )
+
+    def go_to_cart(self):
+        link = self.browser.find_element(*BasePageLocators.CART_LINK)
+        link.click()
 
     def open(self):
         self.browser.get(self.url)

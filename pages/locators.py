@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+    CART_LINK = (By.CSS_SELECTOR, 'div[class*="basket"] a[href*="basket"]')
 
 
 class MainPageLocators:
@@ -24,3 +25,7 @@ class ProductPageLocators:
     PRODUCT_PRICE = (
         By.CSS_SELECTOR, 'div[class$="product_main"] p[class^="price"]'
     )
+
+
+class CartPageLocators:
+    CART_CONTENT = (By.CSS_SELECTOR, '#content_inner p')
