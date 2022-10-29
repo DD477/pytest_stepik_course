@@ -18,10 +18,9 @@ class ProductPage(BasePage):
         assert self.is_element_present(
             *ProductPageLocators.SUCCESS_MESSAGE
         ), 'success message not found'
-        message = self.browser.find_element(
+        title_from_message = self.browser.find_element(
             *ProductPageLocators.SUCCESS_MESSAGE
-        )
-        title_from_message = re.split('\n| был', message.text)[1]
+        ).text
         product_title = self.browser.find_element(
             *ProductPageLocators.PRODUCT_TITLE
         ).text
