@@ -1,5 +1,7 @@
+import re
+
 from .base_page import BasePage
-from .locators import LoginPageLocators, BasePageLocators
+from .locators import BasePageLocators, LoginPageLocators
 
 
 class LoginPage(BasePage):
@@ -9,10 +11,11 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        # убрать эту хрень
-        link = 'http://selenium1py.pythonanywhere.com/en-gb/accounts/login/'
-        assert self.browser.current_url == link, (
-            'current url is not login_url'
+        current_url = re.match(
+            self.LOGIN_URL_PATTERN, self.browser.current_url
+        )
+        assert current_url is not None, (
+            'current url is not login url'
         )
 
     def should_be_login_form(self):

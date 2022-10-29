@@ -1,17 +1,16 @@
-import re
-from utills import solve_quiz_and_get_code
-
 from .base_page import BasePage
 from .locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def add_product_to_cart(self):
+    # if page have a quiz use is_got_quiz=True
+    def add_product_to_cart(self, is_got_quiz=False):
         add_to_cart_button = self.browser.find_element(
             *ProductPageLocators.ADD_TO_CARD
         )
         add_to_cart_button.click()
-        # solve_quiz_and_get_code(self.browser)
+        if is_got_quiz:
+            self.solve_quiz_and_get_code()
         self.check_succes_message()
 
     def check_succes_message(self):
